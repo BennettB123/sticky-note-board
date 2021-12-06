@@ -1,0 +1,25 @@
+.NoteBoard {
+	position: absolute;
+	inset: 50px;
+	background-color: #9c6f3e;
+	border-color: #c0c0c0;
+	border-style: solid;
+	border-width: 15px;
+	border-radius: 2px;
+}
+
+.NoteBoard:before {
+	background: none;
+	border-width: 3px;
+	border-color: #d0d0d0;
+	border-style: solid;
+	border-radius: 2px;
+	content: "";
+	display: block;
+	position: absolute;
+	top: -9px;
+	left: -9px;
+	right: -9px;
+	bottom: -9px;
+	pointer-events: none;
+}
