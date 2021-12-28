@@ -1,16 +1,16 @@
-.HelpIcon {
+.AddNoteButton {
 	flex: 1;
 	margin-left: auto;
 }
 
-.HamburgerIconWrapper {
+.AddNoteButtonWrapper {
 	float: right;
-	width: 50px;
-	height: 50px;
+	width: 45px;
+	height: 45px;
 	transition: all 0.25s;
 	transform-origin: 50% 50%;
 }
 
-.HamburgerIconWrapper:hover {
+.AddNoteButtonWrapper:hover {
 	transform: scale(0.8);
 }

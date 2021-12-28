@@ -1,0 +1,38 @@
+.Note {
+	position: absolute;
+	background-color: #fafae8;
+	width: 200px;
+	height: 200px;
+}
+
+.NoteHeader {
+	background-color: #ffffa0;
+	height: 35px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.MenuButtonWrapper {
+	margin: auto 5px auto auto;
+	width: 30px;
+	height: 30px;
+	transition: all 0.25s;
+	transform-origin: 50% 50%;
+}
+
+.MenuButtonWrapper:hover {
+	transform: scale(0.8);
+}
+
+.ExitButtonWrapper {
+	margin: auto 5px auto 0;
+	width: 20px;
+	height: 20px;
+	transition: all 0.25s;
+	transform-origin: 50% 50%;
+}
+
+.ExitButtonWrapper:hover {
+	transform: scale(0.8);
+}
