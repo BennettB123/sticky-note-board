@@ -32,6 +32,11 @@ function Note(props) {
         <div className="NoteHeader">
           <div className="MenuButtonWrapper" title="open note menu">
             <TripleDotIcon></TripleDotIcon>
+            {/* Potential Customization Options for Each Note:
+             * font family
+             * font size
+             * color
+             */}
           </div>
 
           <div
@@ -42,8 +47,7 @@ function Note(props) {
             <ExitIcon className="ExitButton" />
           </div>
         </div>
-        <h1>This is a note!</h1>
-        <h3>Soon you will be able to type here</h3>
+        <textarea className="NoteTextField" placeholder="Type your note here" />
       </div>
     </Draggable>
   );
