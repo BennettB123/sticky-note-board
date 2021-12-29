@@ -18,3 +18,17 @@ body {
 	padding-top: 5px;
 	padding-left: 10px;
 }
+
+.AddIconWrapper {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 45px;
+	height: 45px;
+	transition: all 0.25s;
+	transform-origin: 50% 50%;
+}
+
+.AddIconWrapper:hover {
+	transform: scale(0.8);
+}

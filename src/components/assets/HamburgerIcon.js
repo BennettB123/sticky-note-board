@@ -1,5 +1,3 @@
-import "./HelpIcon.css";
-
 const HamburgerIcon = () => {
 	return (
 		<svg
@@ -15,14 +13,4 @@ const HamburgerIcon = () => {
 	);
 };
 
-function HelpIcon() {
-	return (
-		<div className="HelpIcon">
-			<div className="HamburgerIconWrapper" title="open menu">
-				<HamburgerIcon alt="open menu"></HamburgerIcon>
-			</div>
-		</div>
-	);
-}
-
-export default HelpIcon;
+export default HamburgerIcon;
