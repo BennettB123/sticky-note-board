@@ -2,25 +2,55 @@
   position: absolute;
   inset: 50px;
   background-color: #9c6f3e;
-  border-color: #c0c0c0;
+  background-image: url("./assets/wallpaper.png");
+  border-color: #a0a0a0;
   border-style: solid;
-  border-width: 15px;
+  border-width: 12px;
   border-radius: 2px;
 }
 
 /* Used to create a 2nd border around the noteboard */
 .NoteBoard:before {
   background: none;
-  border-width: 3px;
-  border-color: #d0d0d0;
+  border-width: 2px;
+  border-color: #c0c0c0;
   border-style: solid;
-  border-radius: 2px;
+  border-radius: 1px;
   content: "";
   display: block;
   position: absolute;
-  top: -9px;
-  left: -9px;
-  right: -9px;
-  bottom: -9px;
+  top: -7px;
+  left: -7px;
+  right: -7px;
+  bottom: -7px;
   pointer-events: none;
+}
+
+.HeaderBar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.filler {
+  flex: 1;
+}
+
+.TitleText {
+  margin: auto;
+  padding-top: 5px;
+}
+
+.AddIconWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  transition: all 0.25s;
+  transform-origin: 50% 50%;
+}
+
+.AddIconWrapper:hover {
+  transform: scale(0.8);
 }
