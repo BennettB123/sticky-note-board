@@ -1,56 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
+
 .NoteBoard {
-  position: absolute;
-  inset: 50px;
-  background-color: #9c6f3e;
-  background-image: url("./assets/wallpaper.png");
-  border-color: #a0a0a0;
-  border-style: solid;
-  border-width: 12px;
-  border-radius: 2px;
+	position: absolute;
+	inset: 50px;
+	background-color: #9c6f3e;
+	background-image: url("./assets/wallpaper.png");
+	border-color: #a0a0a0;
+	border-style: solid;
+	border-width: 12px;
+	border-radius: 2px;
 }
 
 /* Used to create a 2nd border around the noteboard */
 .NoteBoard:before {
-  background: none;
-  border-width: 2px;
-  border-color: #c0c0c0;
-  border-style: solid;
-  border-radius: 1px;
-  content: "";
-  display: block;
-  position: absolute;
-  top: -7px;
-  left: -7px;
-  right: -7px;
-  bottom: -7px;
-  pointer-events: none;
+	background: none;
+	border-width: 2px;
+	border-color: #c0c0c0;
+	border-style: solid;
+	border-radius: 1px;
+	content: "";
+	display: block;
+	position: absolute;
+	top: -7px;
+	left: -7px;
+	right: -7px;
+	bottom: -7px;
+	pointer-events: none;
 }
 
 .HeaderBar {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
 }
 
 .filler {
-  flex: 1;
+	flex: 1;
 }
 
 .TitleText {
-  margin: auto;
-  padding-top: 5px;
+	font-family: "Architects Daughter", cursive;
+	margin: auto;
+	padding-top: 5px;
 }
 
 .AddIconWrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 45px;
-  height: 45px;
-  transition: all 0.25s;
-  transform-origin: 50% 50%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 45px;
+	height: 45px;
+	transition: all 0.25s;
+	transform-origin: 50% 50%;
 }
 
 .AddIconWrapper:hover {
-  transform: scale(0.8);
+	transform: scale(0.8);
 }
