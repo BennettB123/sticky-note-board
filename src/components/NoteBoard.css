@@ -46,8 +46,6 @@
 
 .AddIconWrapper {
 	position: absolute;
-	top: 0;
-	right: 0;
 	width: 45px;
 	height: 45px;
 	transition: all 0.25s;
