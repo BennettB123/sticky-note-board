@@ -1,5 +1,4 @@
 body {
-  background-color: beige;
-  background-image: url("./components/assets/wallpaper.png");
-  font-family: "Trebuchet MS", sans-serif;
+	background-image: url("./components/assets/wallpaper.png");
+	font-family: "Trebuchet MS", sans-serif;
 }

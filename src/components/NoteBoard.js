@@ -7,6 +7,7 @@ import Note from "./Note";
 function NoteBoard() {
 	const [notes, setNotes] = useState([]);
 	const [nextNoteId, setNextNoteId] = useState(0);
+	const [wallColor, setWallColor] = useState("#ffffff");
 
 	const addNoteButtonHandler = () => {
 		let newNotesList = notes.concat({
@@ -20,8 +21,12 @@ function NoteBoard() {
 		var remainingNotes = notes.filter((note) => {
 			return note.id !== id;
 		});
-
 		setNotes(remainingNotes);
+	};
+
+	const wallColorCallback = (colorHexString) => {
+		setWallColor(colorHexString);
+		document.body.style.backgroundColor = colorHexString;
 	};
 
 	return (
@@ -30,7 +35,7 @@ function NoteBoard() {
 				<div className="filler"></div>
 				<h1 className="TitleText">Sticky Note Board</h1>
 				<AddNoteButton onClick={addNoteButtonHandler} />
-				<Menu />
+				<Menu wallColorCallback={wallColorCallback} />
 			</div>
 			<div className="NoteBoard">
 				{notes.map((note) => (

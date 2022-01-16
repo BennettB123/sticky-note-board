@@ -3,7 +3,7 @@ import "./Menu.css";
 import HamburgerIcon from "./assets/HamburgerIcon";
 import ExitIcon from "./assets/ExitIcon";
 
-function Menu() {
+function Menu(props) {
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	const toggleMenu = () => {
@@ -34,9 +34,63 @@ function Menu() {
 					</div>
 				</div>
 
-				<ul>This</ul>
-				<ul>That</ul>
-				<ul>Everything In Between</ul>
+				<ul>
+					<label>Wall Background Color</label>
+					<div className="ColorSelectionBlockWrapper">
+						<div
+							className="ColorSelectionBlock"
+							style={{ backgroundColor: "#ffffff" }}
+							onClick={() => props.wallColorCallback("#ffffff")}
+						></div>
+						<div
+							className="ColorSelectionBlock"
+							style={{ backgroundColor: "#96d6d6" }}
+							onClick={() => props.wallColorCallback("#96d6d6")}
+						></div>
+						<div
+							className="ColorSelectionBlock"
+							style={{ backgroundColor: "#ff6b6b" }}
+							onClick={() => props.wallColorCallback("#ff6b6b")}
+						></div>
+						<div
+							className="ColorSelectionBlock"
+							style={{ backgroundColor: "#abff7a" }}
+							onClick={() => props.wallColorCallback("#abff7a")}
+						></div>
+						<div
+							className="ColorSelectionBlock"
+							style={{ backgroundColor: "#f2bdff" }}
+							onClick={() => props.wallColorCallback("#f2bdff")}
+						></div>
+					</div>
+					<div className="ColorSelectionBlockWrapper">
+						<div
+							className="ColorSelectionBlock"
+							style={{ backgroundColor: "#fcfaa7" }}
+							onClick={() => props.wallColorCallback("#fcfaa7")}
+						></div>
+						<div
+							className="ColorSelectionBlock"
+							style={{ backgroundColor: "#a38fff" }}
+							onClick={() => props.wallColorCallback("#a38fff")}
+						></div>
+						<div
+							className="ColorSelectionBlock"
+							style={{ backgroundColor: "#ffc675" }}
+							onClick={() => props.wallColorCallback("#ffc675")}
+						></div>
+						<div
+							className="ColorSelectionBlock"
+							style={{ backgroundColor: "#8fffba" }}
+							onClick={() => props.wallColorCallback("#8fffba")}
+						></div>
+						<div
+							className="ColorSelectionBlock"
+							style={{ backgroundColor: "#a1a1a1" }}
+							onClick={() => props.wallColorCallback("#a1a1a1")}
+						></div>
+					</div>
+				</ul>
 			</div>
 		</div>
 	);

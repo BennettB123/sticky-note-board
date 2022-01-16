@@ -9,6 +9,7 @@
 	border-style: solid;
 	border-width: 12px;
 	border-radius: 2px;
+	box-shadow: -2px 2px 5px #555555, 1px 0px 5px #555555;
 }
 
 /* Used to create a 2nd border around the noteboard */

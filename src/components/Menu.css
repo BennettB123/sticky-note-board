@@ -13,10 +13,33 @@
 .Menu {
 	position: absolute;
 	height: 100%;
-	width: 40%;
+	width: 400px;
 	right: 0;
 	z-index: 1;
-	background-color: lightblue;
+	border-radius: 20px 0 0 20px;
+	box-shadow: -15px 5px 15px #444444;
+	box-sizing: border-box;
+	background-color: #9c6f3e;
+	background-image: url("./assets/wallpaper.png");
+	border-color: #a0a0a0;
+	border-style: solid;
+	border-width: 10px 0 10px 10px;
+}
+
+.Menu:before {
+	background: none;
+	border-width: 2px 0 2px 2px;
+	border-color: #c0c0c0;
+	border-style: solid;
+	border-radius: 18px 0 0 18px;
+	content: "";
+	display: block;
+	position: absolute;
+	top: -6px;
+	left: -6px;
+	right: 0px;
+	bottom: -6px;
+	pointer-events: none;
 }
 
 .MenuHeaderBar {
@@ -31,8 +54,44 @@
 	padding: 10px;
 	transition: all 0.25s;
 	transform-origin: 50% 50%;
+	color: #fafae8;
 }
 
 .MenuExitButtonWrapper:hover {
 	transform: scale(0.8);
+}
+
+.Menu ul {
+	margin: 0px;
+	padding: 20px;
+}
+
+.Menu label {
+	display: inline-block;
+	font-family: "Architects Daughter", cursive;
+	/* font-weight: bold; */
+	font-size: 26px;
+	color: #fafae8;
+	margin-bottom: 5px;
+}
+
+.ColorSelectionBlockWrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.ColorSelectionBlock {
+	width: 50px;
+	height: 50px;
+	border-color: #fafae8;
+	border-style: solid;
+	border-width: 2px;
+	transition: all 0.25s;
+	transform-origin: 50% 50%;
+}
+
+.ColorSelectionBlock:hover {
+	transform: scale(0.85);
 }
