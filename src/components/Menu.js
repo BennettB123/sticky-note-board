@@ -8,7 +8,6 @@ function Menu(props) {
 
 	const toggleMenu = () => {
 		setMenuOpen(!menuOpen);
-		console.log(menuOpen);
 	};
 
 	return (

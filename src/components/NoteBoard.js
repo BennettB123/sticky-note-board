@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./NoteBoard.css";
 import Menu from "./Menu.js";
 import AddNoteButton from "./AddNoteButton";
@@ -8,6 +8,14 @@ function NoteBoard() {
 	const [notes, setNotes] = useState([]);
 	const [nextNoteId, setNextNoteId] = useState(0);
 	const [wallColor, setWallColor] = useState("#ffffff");
+
+	useEffect(() => {
+		let previousWallColor = localStorage.getItem("wallColor");
+		if (previousWallColor) {
+			setWallColor(previousWallColor);
+			document.body.style.backgroundColor = previousWallColor;
+		}
+	}, [wallColor]);
 
 	const addNoteButtonHandler = () => {
 		let newNotesList = notes.concat({
@@ -25,6 +33,7 @@ function NoteBoard() {
 	};
 
 	const wallColorCallback = (colorHexString) => {
+		localStorage.setItem("wallColor", colorHexString);
 		setWallColor(colorHexString);
 		document.body.style.backgroundColor = colorHexString;
 	};
