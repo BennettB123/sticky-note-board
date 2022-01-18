@@ -6,12 +6,14 @@ import ExitIcon from "./assets/ExitIcon";
 
 function Note(props) {
 	const [content, setContent] = useState(props.content);
+	const [x, setX] = useState(props.x);
+	const [y, setY] = useState(props.y);
 
 	// required for React not to throw errors about findDOMNode being deprecated
 	const nodeRef = React.useRef(null);
 
 	// used to only drag if mouse is on the NoteHeader
-	const dragHandler = () => {
+	const dragStartHandler = () => {
 		var noteHeader = [].slice.call(
 			document.getElementsByClassName("NoteHeader")
 		);
@@ -23,23 +25,33 @@ function Note(props) {
 			return false;
 	};
 
+	const dragStopHandler = (_mouseEvent, locationData) => {
+		setX(locationData.x);
+		setY(locationData.y);
+	};
+
 	const handleContentChange = (event) => {
 		setContent(event.target.value);
 	};
 
 	// Call noteUpdatedHandler when content is updated
 	useEffect(() => {
-		if (props.content !== content) {
-			props.noteUpdatedHandler(props.id, { content: content });
+		if (props.content !== content || x !== props.x || y !== props.y) {
+			props.noteUpdatedHandler(props.id, {
+				content: content,
+				x: x,
+				y: y,
+			});
 		}
-	}, [content, props]);
+	}, [content, x, y, props]);
 
 	return (
 		<Draggable
 			bounds="parent"
-			defaultPosition={{ x: 0, y: 0 }}
+			defaultPosition={{ x: props.x, y: props.y }}
 			nodeRef={nodeRef}
-			onStart={dragHandler}
+			onStart={dragStartHandler}
+			onStop={dragStopHandler}
 		>
 			<div className="Note" ref={nodeRef}>
 				<div className="NoteHeader">

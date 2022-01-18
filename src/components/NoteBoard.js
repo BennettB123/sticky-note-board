@@ -9,6 +9,8 @@ function NoteBoard() {
 	const [noteChanged, setNoteChanged] = useState(false);
 	const [nextNoteId, setNextNoteId] = useState(0);
 	const defaultNoteContent = "";
+	const nextNoteX = 0;
+	const nextNoteY = 0;
 
 	useEffect(() => {
 		// Get previous wall color from localStorage if exists
@@ -51,6 +53,8 @@ function NoteBoard() {
 		newNotes.forEach((note) => {
 			if (note.id === id) {
 				note.content = noteProperties.content;
+				note.x = noteProperties.x;
+				note.y = noteProperties.y;
 			}
 		});
 		setNotes(newNotes);
@@ -61,6 +65,8 @@ function NoteBoard() {
 		let newNotesList = notes.concat({
 			id: nextNoteId,
 			content: defaultNoteContent,
+			x: nextNoteX,
+			y: nextNoteY,
 		});
 		setNotes(newNotesList);
 		setNextNoteId(nextNoteId + 1);
@@ -93,6 +99,8 @@ function NoteBoard() {
 						key={note.id}
 						id={note.id}
 						content={note.content}
+						x={note.x}
+						y={note.y}
 						exitButtonHandler={exitButtonHandler}
 						noteUpdatedHandler={noteUpdatedHandler}
 					/>
