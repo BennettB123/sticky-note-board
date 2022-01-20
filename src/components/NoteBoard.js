@@ -11,6 +11,8 @@ function NoteBoard() {
 	const defaultNoteContent = "";
 	const nextNoteX = 0;
 	const nextNoteY = 0;
+	const defaultNoteWidth = 250;
+	const defaultNoteHeight = 250;
 
 	useEffect(() => {
 		// Get previous wall color from localStorage if exists
@@ -55,6 +57,8 @@ function NoteBoard() {
 				note.content = noteProperties.content;
 				note.x = noteProperties.x;
 				note.y = noteProperties.y;
+				note.width = noteProperties.width;
+				note.height = noteProperties.height;
 			}
 		});
 		setNotes(newNotes);
@@ -67,6 +71,8 @@ function NoteBoard() {
 			content: defaultNoteContent,
 			x: nextNoteX,
 			y: nextNoteY,
+			width: defaultNoteWidth,
+			height: defaultNoteHeight,
 		});
 		setNotes(newNotesList);
 		setNextNoteId(nextNoteId + 1);
@@ -101,6 +107,8 @@ function NoteBoard() {
 						content={note.content}
 						x={note.x}
 						y={note.y}
+						width={note.width}
+						height={note.height}
 						exitButtonHandler={exitButtonHandler}
 						noteUpdatedHandler={noteUpdatedHandler}
 					/>
