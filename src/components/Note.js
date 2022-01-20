@@ -54,7 +54,7 @@ function Note(props) {
 		return function cleanup() {
 			myObserver.disconnect();
 		};
-	}, []);
+	}, [props]);
 
 	// Call noteUpdatedHandler when content is updated
 	useEffect(() => {
@@ -63,7 +63,7 @@ function Note(props) {
 			x !== props.x ||
 			y !== props.y ||
 			width !== props.width ||
-			height != props.height
+			height !== props.height
 		) {
 			props.noteUpdatedHandler(props.id, {
 				content: content,
