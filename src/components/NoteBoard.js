@@ -13,6 +13,8 @@ function NoteBoard() {
 	const nextNoteY = 0;
 	const defaultNoteWidth = 250;
 	const defaultNoteHeight = 250;
+	const defaultNoteColor = "#FFF8aa";
+	const defaultNoteHeaderColor = "#FFED73";
 
 	useEffect(() => {
 		// Get previous wall color from localStorage if exists
@@ -59,6 +61,8 @@ function NoteBoard() {
 				note.y = noteProperties.y;
 				note.width = noteProperties.width;
 				note.height = noteProperties.height;
+				note.color = noteProperties.color;
+				note.headerColor = noteProperties.headerColor;
 			}
 		});
 		setNotes(newNotes);
@@ -73,6 +77,8 @@ function NoteBoard() {
 			y: nextNoteY,
 			width: defaultNoteWidth,
 			height: defaultNoteHeight,
+			color: defaultNoteColor,
+			headerColor: defaultNoteHeaderColor,
 		});
 		setNotes(newNotesList);
 		setNextNoteId(nextNoteId + 1);
@@ -109,6 +115,8 @@ function NoteBoard() {
 						y={note.y}
 						width={note.width}
 						height={note.height}
+						color={note.color}
+						headerColor={note.headerColor}
 						exitButtonHandler={exitButtonHandler}
 						noteUpdatedHandler={noteUpdatedHandler}
 					/>

@@ -10,12 +10,17 @@ function Note(props) {
 	const [y, setY] = useState(props.y);
 	const [width, setWidth] = useState(props.width);
 	const [height, setHeight] = useState(props.height);
+	const [color, setColor] = useState(props.color);
+	const [headerColor, setHeaderColor] = useState(props.headerColor);
+	const [menuOpen, setMenuOpen] = useState(false);
 
 	// required for React not to throw errors about findDOMNode being deprecated
 	const nodeRef = React.useRef(null);
 
 	// used to only drag if mouse is on the NoteHeader
 	const dragStartHandler = () => {
+		console.log(props.color);
+		console.log(props.headerColor);
 		var noteHeader = [].slice.call(
 			document.getElementsByClassName("NoteHeader")
 		);
@@ -34,6 +39,11 @@ function Note(props) {
 
 	const handleContentChange = (event) => {
 		setContent(event.target.value);
+	};
+
+	const handleColorChange = (color, headerColor) => {
+		setColor(color);
+		setHeaderColor(headerColor);
 	};
 
 	// Detect note size changes
@@ -56,14 +66,16 @@ function Note(props) {
 		};
 	}, [props]);
 
-	// Call noteUpdatedHandler when content is updated
+	// Call noteUpdatedHandler when note is updated/moved/resized
 	useEffect(() => {
 		if (
 			props.content !== content ||
 			x !== props.x ||
 			y !== props.y ||
 			width !== props.width ||
-			height !== props.height
+			height !== props.height ||
+			color !== props.color ||
+			headerColor !== props.headerColor
 		) {
 			props.noteUpdatedHandler(props.id, {
 				content: content,
@@ -71,9 +83,11 @@ function Note(props) {
 				y: y,
 				width: width,
 				height: height,
+				color: color,
+				headerColor: headerColor,
 			});
 		}
-	}, [content, x, y, width, height, props]);
+	}, [content, x, y, width, height, color, headerColor, props]);
 
 	return (
 		<Draggable
@@ -87,16 +101,24 @@ function Note(props) {
 				className="Note"
 				id={`Note${props.id}`}
 				ref={nodeRef}
-				style={{ width: `${width}px`, height: `${height}px` }}
+				style={{
+					width: `${width}px`,
+					height: `${height}px`,
+					backgroundColor: color,
+				}}
 			>
-				<div className="NoteHeader">
-					<div className="MenuButtonWrapper" title="open note menu">
+				<div
+					className="NoteHeader"
+					style={{
+						backgroundColor: headerColor,
+					}}
+				>
+					<div
+						className="MenuButtonWrapper"
+						onClick={() => setMenuOpen(!menuOpen)}
+						title="open note menu"
+					>
 						<TripleDotIcon></TripleDotIcon>
-						{/* Potential Customization Options for Each Note:
-						 * font family
-						 * font size
-						 * color
-						 */}
 					</div>
 
 					<div
@@ -105,6 +127,66 @@ function Note(props) {
 						title="delete note"
 					>
 						<ExitIcon className="ExitButton" />
+					</div>
+					<div
+						className="NoteMenu"
+						style={{
+							display: menuOpen ? "flex" : "none",
+						}}
+					>
+						<div
+							className="NoteColorSelectionBlock"
+							style={{ backgroundColor: "#FFED73" }}
+							onClick={() =>
+								handleColorChange("#FFF8aa", "#FFED73")
+							}
+						></div>
+						<div
+							className="NoteColorSelectionBlock"
+							style={{ backgroundColor: "#A0FFA0" }}
+							onClick={() =>
+								handleColorChange("#C7F6B6", "#A0FFA0")
+							}
+						></div>
+						<div
+							className="NoteColorSelectionBlock"
+							style={{ backgroundColor: "#FECBD4" }}
+							onClick={() =>
+								handleColorChange("#FDD7DE", "#FECBD4")
+							}
+						></div>
+						<div
+							className="NoteColorSelectionBlock"
+							style={{ backgroundColor: "#9BD7FB" }}
+							onClick={() =>
+								handleColorChange("#C1E9FC", "#9BD7FB")
+							}
+						></div>
+						<div
+							className="NoteColorSelectionBlock"
+							style={{ backgroundColor: "#FFB347" }}
+							onClick={() =>
+								handleColorChange("#FFC983", "#FFB347")
+							}
+						></div>
+						<div
+							className="NoteColorSelectionBlock"
+							style={{ backgroundColor: "#B19CD9" }}
+							onClick={() =>
+								handleColorChange("#D6B8E6", "#B19CD9")
+							}
+						></div>
+						<div className="NoteMenuExitButtonWrapperWrapper">
+							<div
+								className="NoteMenuExitButtonWrapper"
+								onClick={() => {
+									setMenuOpen(!menuOpen);
+								}}
+								title="close menu"
+							>
+								<ExitIcon className="NoteMenuExitButton" />
+							</div>
+						</div>
 					</div>
 				</div>
 				<textarea

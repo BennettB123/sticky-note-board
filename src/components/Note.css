@@ -1,6 +1,5 @@
 .Note {
 	position: absolute;
-	background-color: #fafae8;
 	box-shadow: -2px 2px 2px #444444, 1px 0px 2px #444444;
 	min-width: 150px;
 	min-height: 150px;
@@ -25,7 +24,6 @@
 }
 
 .NoteHeader {
-	background-color: #ffffa0;
 	height: 35px;
 	width: 100%;
 	display: flex;
@@ -54,4 +52,44 @@
 
 .ExitButtonWrapper:hover {
 	transform: scale(0.8);
+}
+
+.NoteMenu {
+	width: 100%;
+	flex-direction: row;
+	justify-content: center;
+	position: absolute;
+	width: 100%;
+	height: 40px;
+	background-color: #ffffff;
+	box-shadow: -4px 4px 4px #444444, 1px 0px 2px #444444;
+	border-radius: 0 0 10px 10px;
+}
+
+.NoteMenuExitButtonWrapperWrapper {
+	height: 100%;
+	flex: 0 0 30px;
+}
+
+.NoteMenuExitButtonWrapper {
+	height: 100%;
+	width: 60%;
+	margin: auto;
+	transition: all 0.25s;
+	transform-origin: 50% 50%;
+}
+
+.NoteMenuExitButtonWrapper:hover {
+	transform: scale(0.8);
+}
+
+.NoteColorSelectionBlock {
+	height: 100%;
+	width: 100%;
+	transition: all 0.25s;
+	transform-origin: 50% 50%;
+}
+
+.NoteColorSelectionBlock:hover {
+	transform: scale(0.9);
 }
