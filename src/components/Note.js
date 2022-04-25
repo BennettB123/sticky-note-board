@@ -8,7 +8,7 @@ function Note(props) {
 	const [content, setContent] = useState(props.content);
 	const [x, setX] = useState(props.x);
 	const [y, setY] = useState(props.y);
-	const [z, setZ] = useState(props.z);
+	const [layeringIndex, setLayeringIndex] = useState(props.layeringIndex);
 	const [width, setWidth] = useState(props.width);
 	const [height, setHeight] = useState(props.height);
 	const [color, setColor] = useState(props.color);
@@ -30,8 +30,10 @@ function Note(props) {
 		)
 			return false;
 		else {
-			var newZ = props.noteUpdateZIndexHandler(props.id);
-			setZ(newZ);
+			var newLayeringIndex = props.noteUpdatedLayeringIndexHandler(
+				props.id
+			);
+			setLayeringIndex(newLayeringIndex);
 		}
 	};
 
@@ -76,7 +78,7 @@ function Note(props) {
 			props.content !== content ||
 			x !== props.x ||
 			y !== props.y ||
-			z !== props.z ||
+			layeringIndex !== props.layeringIndex ||
 			width !== props.width ||
 			height !== props.height ||
 			color !== props.color ||
@@ -86,14 +88,24 @@ function Note(props) {
 				content: content,
 				x: x,
 				y: y,
-				z: z,
+				layeringIndex: layeringIndex,
 				width: width,
 				height: height,
 				color: color,
 				headerColor: headerColor,
 			});
 		}
-	}, [content, x, y, z, width, height, color, headerColor, props]);
+	}, [
+		content,
+		x,
+		y,
+		layeringIndex,
+		width,
+		height,
+		color,
+		headerColor,
+		props,
+	]);
 
 	return (
 		<Draggable
@@ -110,7 +122,6 @@ function Note(props) {
 				style={{
 					width: `${width}px`,
 					height: `${height}px`,
-					zIndex: z, //////////////////////// THIS SHIT AINT WORKING ///////////////////////
 					backgroundColor: color,
 				}}
 			>

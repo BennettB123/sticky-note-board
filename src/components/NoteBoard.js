@@ -59,7 +59,7 @@ function NoteBoard() {
 				note.content = noteProperties.content;
 				note.x = noteProperties.x;
 				note.y = noteProperties.y;
-				note.z = noteProperties.z;
+				note.layeringIndex = noteProperties.layeringIndex;
 				note.width = noteProperties.width;
 				note.height = noteProperties.height;
 				note.color = noteProperties.color;
@@ -71,14 +71,14 @@ function NoteBoard() {
 	};
 
 	const addNoteButtonHandler = () => {
-		let newZ = getHighestZValuePlusOne();
+		let newLayeringIndex = getHighestLayerIndexPlusOne();
 
 		let newNotesList = notes.concat({
 			id: nextNoteId,
 			content: defaultNoteContent,
 			x: nextNoteX,
 			y: nextNoteY,
-			z: newZ,
+			layeringIndex: newLayeringIndex,
 			width: defaultNoteWidth,
 			height: defaultNoteHeight,
 			color: defaultNoteColor,
@@ -96,17 +96,17 @@ function NoteBoard() {
 		setNoteChanged(true);
 	};
 
-	const noteUpdateZIndexHandler = (id) => {
-		let newZ = getHighestZValuePlusOne();
+	const noteUpdatedLayeringIndexHandler = (id) => {
+		let newLayeringIndex = getHighestLayerIndexPlusOne();
 		let newNotes = notes;
 		newNotes.forEach((note) => {
 			if (note.id === id) {
-				note.z = newZ;
+				note.layeringIndex = newLayeringIndex;
 			}
 		});
 		setNotes(newNotes);
 		setNoteChanged(true);
-		return newZ;
+		return newLayeringIndex;
 	};
 
 	const wallColorCallback = (colorHexString) => {
@@ -114,14 +114,15 @@ function NoteBoard() {
 		document.body.style.backgroundColor = colorHexString;
 	};
 
-	const getHighestZValuePlusOne = () => {
-		let currMaxZ = 0;
+	const getHighestLayerIndexPlusOne = () => {
+		let currMaxLayer = 0;
 		notes.forEach((note) => {
-			if (note.z > currMaxZ) currMaxZ = note.z;
+			if (note.layeringIndex > currMaxLayer)
+				currMaxLayer = note.layeringIndex;
 		});
-		// terrible way to calculate z indexes because their values always go up.
+		// terrible way to calculate layering indexes because their values always go up.
 		// I know its basically impossible for this to ever reach the max number, but just in case...
-		if (Number.isSafeInteger(currMaxZ + 1)) return currMaxZ + 1;
+		if (Number.isSafeInteger(currMaxLayer + 1)) return currMaxLayer + 1;
 		else return 0;
 	};
 
@@ -134,23 +135,30 @@ function NoteBoard() {
 				<Menu wallColorCallback={wallColorCallback} />
 			</div>
 			<div className="NoteBoard">
-				{notes.map((note) => (
-					<Note
-						key={note.id}
-						id={note.id}
-						content={note.content}
-						x={note.x}
-						y={note.y}
-						z={note.z}
-						width={note.width}
-						height={note.height}
-						color={note.color}
-						headerColor={note.headerColor}
-						exitButtonHandler={exitButtonHandler}
-						noteUpdatedHandler={noteUpdatedHandler}
-						noteUpdateZIndexHandler={noteUpdateZIndexHandler}
-					/>
-				))}
+				{notes
+					.sort(
+						(note1, note2) =>
+							note1.layeringIndex - note2.layeringIndex
+					)
+					.map((note) => (
+						<Note
+							key={note.id}
+							id={note.id}
+							content={note.content}
+							x={note.x}
+							y={note.y}
+							layeringIndex={note.layeringIndex}
+							width={note.width}
+							height={note.height}
+							color={note.color}
+							headerColor={note.headerColor}
+							exitButtonHandler={exitButtonHandler}
+							noteUpdatedHandler={noteUpdatedHandler}
+							noteUpdatedLayeringIndexHandler={
+								noteUpdatedLayeringIndexHandler
+							}
+						/>
+					))}
 			</div>
 		</div>
 	);
