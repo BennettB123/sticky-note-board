@@ -9,20 +9,6 @@
 	overflow: hidden;
 }
 
-.NoteTextField {
-	height: calc(100% - 35px);
-	width: 100%;
-	padding: 5px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	border-style: none;
-	resize: none;
-	background-color: inherit;
-	font-size: 18px;
-	font-family: "Times New Roman", Times, serif;
-}
-
 .NoteHeader {
 	height: 35px;
 	width: 100%;
@@ -92,4 +78,64 @@
 
 .NoteColorSelectionBlock:hover {
 	transform: scale(0.9);
+}
+
+.NoteBodyWrapper {
+	height: calc(100% - 35px);
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border-style: none;
+	resize: none;
+	background-color: inherit;
+	font-size: 18px;
+	font-family: "Trebuchet MS", sans-serif;
+}
+
+.NoteBodyEditor {
+	height: 100%;
+	width: 100%;
+	padding: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border-style: none;
+	resize: none;
+	overflow: auto;
+	background-color: inherit;
+	font-size: 18px;
+	font-family: "Trebuchet MS", sans-serif;
+}
+
+.NoteBodyViewer {
+	height: 100%;
+	width: 100%;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border-style: none;
+	resize: none;
+	overflow: auto;
+	background-color: inherit;
+	font-size: 18px;
+	font-family: "Trebuchet MS", sans-serif;
+}
+
+/* CSS for markdown components that are created by react-markdown */
+.NoteBodyViewer h1,
+.NoteBodyViewer h2,
+.NoteBodyViewer h3,
+.NoteBodyViewer h4,
+.NoteBodyViewer ul,
+.NoteBodyViewer ol {
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+
+.NoteBodyViewer ul,
+.NoteBodyViewer ol {
+	list-style-position: inside;
+	padding: 0px;
 }

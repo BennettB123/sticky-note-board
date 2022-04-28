@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 import "./Note.css";
 import Draggable from "react-draggable";
 import TripleDotIcon from "./assets/TripleDotIcon";
 import ExitIcon from "./assets/ExitIcon";
+
+// TODO: refactor this component. It is getting too large
+//		- NoteMenu can be seperated
+//		- NoteTextField should be seperated
 
 function Note(props) {
 	const [content, setContent] = useState(props.content);
@@ -14,6 +19,7 @@ function Note(props) {
 	const [color, setColor] = useState(props.color);
 	const [headerColor, setHeaderColor] = useState(props.headerColor);
 	const [menuOpen, setMenuOpen] = useState(false);
+	const [isEditing, setIsEditing] = useState(false);
 
 	// required for React not to throw errors about findDOMNode being deprecated
 	const nodeRef = React.useRef(null);
@@ -50,6 +56,11 @@ function Note(props) {
 		setColor(color);
 		setHeaderColor(headerColor);
 		setMenuOpen(!menuOpen);
+	};
+
+	const toggleIsEditing = () => {
+		if (isEditing) return;
+		setIsEditing(!isEditing);
 	};
 
 	// Detect note size changes
@@ -207,12 +218,34 @@ function Note(props) {
 						</div>
 					</div>
 				</div>
-				<textarea
-					className="NoteTextField"
-					placeholder="Type your note here"
-					value={content}
-					onChange={handleContentChange}
-				/>
+				<div
+					className="NoteBodyWrapper"
+					onClick={toggleIsEditing}
+					onBlur={() => {
+						setIsEditing(false);
+					}}
+				>
+					{(() => {
+						if (isEditing) {
+							return (
+								<textarea
+									className="NoteBodyEditor"
+									autoFocus
+									value={content}
+									onChange={handleContentChange}
+								/>
+							);
+						} else {
+							return (
+								<ReactMarkdown
+									className="NoteBodyViewer"
+									children={content}
+									onChange={handleContentChange}
+								/>
+							);
+						}
+					})()}
+				</div>
 			</div>
 		</Draggable>
 	);
