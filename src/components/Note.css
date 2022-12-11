@@ -136,6 +136,5 @@
 
 .NoteBodyViewer ul,
 .NoteBodyViewer ol {
-	list-style-position: inside;
-	padding: 0px;
+	padding-left: 1em;
 }
