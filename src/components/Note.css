@@ -16,7 +16,7 @@
 	flex-direction: row;
 }
 
-.MenuButtonWrapper {
+.ColorSelectorButtonWrapper {
 	margin: auto 5px auto auto;
 	width: 30px;
 	height: 30px;
@@ -24,7 +24,7 @@
 	transform-origin: 50% 50%;
 }
 
-.MenuButtonWrapper:hover {
+.ColorSelectorButtonWrapper:hover {
 	transform: scale(0.8);
 }
 
@@ -40,7 +40,7 @@
 	transform: scale(0.8);
 }
 
-.NoteMenu {
+.NoteColorMenu {
 	width: 100%;
 	flex-direction: row;
 	justify-content: center;
@@ -52,12 +52,12 @@
 	border-radius: 0 0 10px 10px;
 }
 
-.NoteMenuExitButtonWrapperWrapper {
+.NoteColorMenuExitButtonWrapperWrapper {
 	height: 100%;
 	flex: 0 0 30px;
 }
 
-.NoteMenuExitButtonWrapper {
+.NoteColorMenuExitButtonWrapper {
 	height: 100%;
 	width: 60%;
 	margin: auto;
@@ -65,7 +65,7 @@
 	transform-origin: 50% 50%;
 }
 
-.NoteMenuExitButtonWrapper:hover {
+.NoteColorMenuExitButtonWrapper:hover {
 	transform: scale(0.8);
 }
 

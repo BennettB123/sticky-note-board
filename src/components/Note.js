@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import "./Note.css";
 import Draggable from "react-draggable";
-import TripleDotIcon from "./assets/TripleDotIcon";
+import ColorSelectIcon from "./assets/ColorSelectIcon";
 import ExitIcon from "./assets/ExitIcon";
 
 // TODO: refactor this component. It is getting too large
-//		- NoteMenu can be seperated
+//		- NoteColorMenu can be seperated
 //		- NoteTextField should be seperated
 
 function Note(props) {
@@ -18,7 +18,7 @@ function Note(props) {
 	const [height, setHeight] = useState(props.height);
 	const [color, setColor] = useState(props.color);
 	const [headerColor, setHeaderColor] = useState(props.headerColor);
-	const [menuOpen, setMenuOpen] = useState(false);
+	const [colorMenuOpen, setColorMenuOpen] = useState(false);
 	const [isEditing, setIsEditing] = useState(false);
 
 	// required for React not to throw errors about findDOMNode being deprecated
@@ -55,7 +55,7 @@ function Note(props) {
 	const handleColorChange = (color, headerColor) => {
 		setColor(color);
 		setHeaderColor(headerColor);
-		setMenuOpen(!menuOpen);
+		setColorMenuOpen(!colorMenuOpen);
 	};
 
 	const toggleIsEditing = () => {
@@ -143,11 +143,11 @@ function Note(props) {
 					}}
 				>
 					<div
-						className="MenuButtonWrapper"
-						onClick={() => setMenuOpen(!menuOpen)}
-						title="open note menu"
+						className="ColorSelectorButtonWrapper"
+						onClick={() => setColorMenuOpen(!colorMenuOpen)}
+						title="select note color"
 					>
-						<TripleDotIcon></TripleDotIcon>
+						<ColorSelectIcon></ColorSelectIcon>
 					</div>
 
 					<div
@@ -158,9 +158,9 @@ function Note(props) {
 						<ExitIcon className="ExitButton" />
 					</div>
 					<div
-						className="NoteMenu"
+						className="NoteColorMenu"
 						style={{
-							display: menuOpen ? "flex" : "none",
+							display: colorMenuOpen ? "flex" : "none",
 						}}
 					>
 						<div
@@ -205,15 +205,15 @@ function Note(props) {
 								handleColorChange("#D6B8E6", "#B19CD9")
 							}
 						></div>
-						<div className="NoteMenuExitButtonWrapperWrapper">
+						<div className="NoteColorMenuExitButtonWrapperWrapper">
 							<div
-								className="NoteMenuExitButtonWrapper"
+								className="NoteColorMenuExitButtonWrapper"
 								onClick={() => {
-									setMenuOpen(!menuOpen);
+									setColorMenuOpen(!colorMenuOpen);
 								}}
-								title="close menu"
+								title="close color selector"
 							>
-								<ExitIcon className="NoteMenuExitButton" />
+								<ExitIcon className="NoteColorMenuExitButton" />
 							</div>
 						</div>
 					</div>
