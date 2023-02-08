@@ -4,6 +4,7 @@ import "./Note.css";
 import Draggable from "react-draggable";
 import ColorSelectIcon from "./assets/ColorSelectIcon";
 import ExitIcon from "./assets/ExitIcon";
+import FontMenuIcon from "./assets/FontMenuIcon";
 
 // TODO: refactor this component. It is getting too large
 //		- NoteColorMenu can be seperated
@@ -19,6 +20,7 @@ function Note(props) {
 	const [color, setColor] = useState(props.color);
 	const [headerColor, setHeaderColor] = useState(props.headerColor);
 	const [colorMenuOpen, setColorMenuOpen] = useState(false);
+	const [fontMenuOpen, setFontMenuOpen] = useState(false);
 	const [isEditing, setIsEditing] = useState(false);
 
 	// required for React not to throw errors about findDOMNode being deprecated
@@ -106,17 +108,7 @@ function Note(props) {
 				headerColor: headerColor,
 			});
 		}
-	}, [
-		content,
-		x,
-		y,
-		layeringIndex,
-		width,
-		height,
-		color,
-		headerColor,
-		props,
-	]);
+	}, [content, x, y, layeringIndex, width, height, color, headerColor, props]);
 
 	return (
 		<Draggable
@@ -143,19 +135,42 @@ function Note(props) {
 					}}
 				>
 					<div
-						className="ColorSelectorButtonWrapper"
+						className="NoteHeaderItem"
+						onClick={() => setFontMenuOpen(!fontMenuOpen)}
+						title="change note font properties"
+					>
+						<FontMenuIcon/>
+					</div>
+					<div
+						className="NoteHeaderItem"
 						onClick={() => setColorMenuOpen(!colorMenuOpen)}
 						title="select note color"
 					>
-						<ColorSelectIcon></ColorSelectIcon>
+						<ColorSelectIcon/>
 					</div>
 
 					<div
-						className="ExitButtonWrapper"
+						className="NoteHeaderItem"
 						onClick={() => props.exitButtonHandler(props.id)}
 						title="delete note"
 					>
 						<ExitIcon className="ExitButton" />
+					</div>
+					<div
+						className="NoteFontMenu"
+						style={{
+							display: fontMenuOpen ? "flex" : "none",
+						}}
+					>
+						<div
+							className="NoteFontMenuExitButtonWrapper"
+							onClick={() => {
+								setFontMenuOpen(!fontMenuOpen);
+							}}
+							title="close font menu"
+						>
+							<ExitIcon/>
+						</div>
 					</div>
 					<div
 						className="NoteColorMenu"
@@ -205,16 +220,14 @@ function Note(props) {
 								handleColorChange("#D6B8E6", "#B19CD9")
 							}
 						></div>
-						<div className="NoteColorMenuExitButtonWrapperWrapper">
-							<div
-								className="NoteColorMenuExitButtonWrapper"
-								onClick={() => {
-									setColorMenuOpen(!colorMenuOpen);
-								}}
-								title="close color selector"
-							>
-								<ExitIcon className="NoteColorMenuExitButton" />
-							</div>
+						<div
+							className="NoteColorMenuExitButtonWrapper"
+							onClick={() => {
+								setColorMenuOpen(!colorMenuOpen);
+							}}
+							title="close color selector"
+						>
+							<ExitIcon/>
 						</div>
 					</div>
 				</div>
